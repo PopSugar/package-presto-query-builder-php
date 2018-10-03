@@ -196,7 +196,7 @@ class Query extends Base
         $whereStr = $whereGroup->getWhereConditions();
 
         if ($this->isFirstWhere) {
-            $whereStr = sprintf(' WHERE AND (%s)', $whereStr);
+            $whereStr = sprintf(' WHERE (%s)', $whereStr);
             $this->isFirstWhere = false;
         } else {
             $whereStr = sprintf(' AND (%s)', $whereStr);
