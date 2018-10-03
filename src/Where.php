@@ -63,7 +63,7 @@ trait Where
 
         if (is_null($value)) {
             $valueStr = 'NULL';
-        } elseif (is_numeric($value)) {
+        } elseif (is_int($value) || is_float($value)) {
             $valueStr = $value;
         } else {
             $valueStr = is_string($value) ? sprintf("'%s'", $value) : sprintf("('%s')", implode("','", $value));
