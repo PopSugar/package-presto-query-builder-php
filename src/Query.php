@@ -36,6 +36,17 @@ class Query extends Base
      */
     protected $queryStr = '';
 
+    /** @var ExpressionBuilder $expr */
+    protected $expr;
+
+    /**
+     * Query constructor.
+     */
+    public function __construct()
+    {
+        $this->expr = new ExpressionBuilder();
+    }
+
     /**
      * @param $select
      *
@@ -387,5 +398,13 @@ class Query extends Base
     private function combineQueryStr($str)
     {
         $this->queryStr .= $str;
+    }
+
+    /**
+     * @return ExpressionBuilder
+     */
+    public function expr()
+    {
+        return $this->expr;
     }
 }
