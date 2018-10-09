@@ -61,7 +61,7 @@ class ExpressionBuilder
      */
     public function between($minVal, $maxVal)
     {
-        return 'BETWEEN {$minVal} AND {$maxVal}';
+        return "BETWEEN {$minVal} AND {$maxVal}";
     }
 
     /**
@@ -72,8 +72,7 @@ class ExpressionBuilder
      */
     public function array_overlaps(string $column, array $filter)
     {
-        $arrayString = implode(',', $filter);
-        return 'array_overlaps({$column}, ARRAY [{$arrayString}])';
+        return sprintf('array_overlaps(%s, ARRAY [%s])', $column, implode(',', $filter));
     }
 
     /**
@@ -84,7 +83,7 @@ class ExpressionBuilder
      */
     public function contains(string $column, string $filter)
     {
-        return 'contains({$column}, {$filter})';
+        return sprintf('contains(%s, %s)', $column, $filter);
     }
 
     /**
@@ -94,7 +93,7 @@ class ExpressionBuilder
      */
     public function flatten(string $column)
     {
-        return 'flatten({$column})';
+        return sprintf('flatten(%s)', $column);
     }
 
     /**
@@ -104,6 +103,6 @@ class ExpressionBuilder
      */
     public function array_agg(string $column)
     {
-        return 'array_agg({$column})';
+        return sprintf('array_agg(%s)', $column);
     }
 }
