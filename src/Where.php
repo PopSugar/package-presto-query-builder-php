@@ -19,7 +19,7 @@ trait Where
      * @return string
      * @throws InvalidArgumentException
      */
-    public function getWhereAndStr($column, $condition = NULL, $value = NULL, $isFirstWhere = false)
+    public function getWhereAndStr($column, $condition, $value, $isFirstWhere = false)
     {
         $whereType = $isFirstWhere ? 'WHERE' : 'AND';
 
@@ -35,7 +35,7 @@ trait Where
      * @return string
      * @throws InvalidArgumentException
      */
-    public function getWhereOrStr($column, $condition = NULL, $value = NULL, $isFirstWhere = false)
+    public function getWhereOrStr($column, $condition, $value, $isFirstWhere = false)
     {
         $whereType = $isFirstWhere ? 'WHERE' : 'OR';
 
@@ -57,7 +57,8 @@ trait Where
             throw new InvalidArgumentException('$column argument must be a string');
         }
 
-        if (!$condition) {
+        if (!$condition && !$value) {
+
             $whereStr = sprintf(" %s %s", $whereType, $column);
 
         } else {
