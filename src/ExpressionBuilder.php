@@ -105,4 +105,14 @@ class ExpressionBuilder
     {
         return sprintf('array_agg(%s)', $column);
     }
+
+    /**
+     * @param string $column
+     *
+     * @return string
+     */
+    public function array_distinct(string $column)
+    {
+        return sprintf('array_distinct(%s)', $column);
+    }
 }
