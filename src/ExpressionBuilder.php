@@ -74,7 +74,7 @@ class ExpressionBuilder
     {
         $quotedFilter = sprintf("'%s'", implode("','", $filter));
 
-        return sprintf('array_overlap(%s, ARRAY [%s])', $column, $quotedFilter);
+        return sprintf('arrays_overlap(%s, ARRAY [%s])', $column, $quotedFilter);
     }
 
     /**
