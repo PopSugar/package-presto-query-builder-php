@@ -63,4 +63,27 @@ class ExpressionBuilder
     {
         return 'BETWEEN {$minVal} AND {$maxVal}';
     }
+
+    /**
+     * @param string $column
+     * @param array  $filter
+     *
+     * @return string
+     */
+    public function array_overlaps(string $column, array $filter)
+    {
+        $arrayString = implode(',', $filter);
+        return 'array_overlaps({$column}, ARRAY [{$arrayString}])';
+    }
+
+    /**
+     * @param string $column
+     * @param string $filter
+     *
+     * @return string
+     */
+    public function contains(string $column, string $filter)
+    {
+        return 'contains({$column}, {$filter})';
+    }
 }
