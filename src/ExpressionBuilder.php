@@ -70,9 +70,11 @@ class ExpressionBuilder
      *
      * @return string
      */
-    public function array_overlaps(string $column, array $filter)
+    public function arrays_overlap(string $column, array $filter)
     {
-        return sprintf('array_overlaps(%s, ARRAY [%s])', $column, implode(',', $filter));
+        $quotedFilter = sprintf("'%s'", implode("','", $filter));
+
+        return sprintf('array_overlap(%s, ARRAY [%s])', $column, $quotedFilter);
     }
 
     /**
