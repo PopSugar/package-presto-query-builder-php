@@ -179,7 +179,7 @@ class Query extends Base
      * @return $this
      * @throws InvalidArgumentException
      */
-    public function whereAnd($column, $condition, $value)
+    public function whereAnd($column, $condition = NULL, $value = NULL)
     {
         return $this->where($column, $condition, $this->removeSpecialChars($value), 'AND');
     }
@@ -192,7 +192,7 @@ class Query extends Base
      * @return $this
      * @throws InvalidArgumentException
      */
-    public function whereOr($column, $condition, $value)
+    public function whereOr($column, $condition = NULL, $value = NULL)
     {
         return $this->where($column, $condition, $this->removeSpecialChars($value), 'OR');
     }
