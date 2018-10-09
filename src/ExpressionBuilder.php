@@ -86,4 +86,24 @@ class ExpressionBuilder
     {
         return 'contains({$column}, {$filter})';
     }
+
+    /**
+     * @param string $column
+     *
+     * @return string
+     */
+    public function flatten(string $column)
+    {
+        return 'flatten({$column})';
+    }
+
+    /**
+     * @param string $column
+     *
+     * @return string
+     */
+    public function array_agg(string $column)
+    {
+        return 'array_agg({$column})';
+    }
 }
