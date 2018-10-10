@@ -76,8 +76,11 @@ class ExpressionBuilder extends Base
     public function arrays_overlap(string $column, array $filter)
     {
 
+        array_walk($filter, function(&$item) {
+            $item = $this->removeSpecialChars($item);
+        });
+
         $quotedFilter = sprintf("'%s'", implode("','", $filter));
-        $quotedFilter = $this->removeSpecialChars($quotedFilter);
 
         return sprintf('array_overlap(%s, ARRAY [%s])', $column, $quotedFilter);
     }
