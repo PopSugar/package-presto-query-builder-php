@@ -3,7 +3,7 @@
 namespace MoiTran\PrestoQueryBuilder;
 
 
-class ExpressionBuilder
+class ExpressionBuilder extends Base
 {
     /**
      * Wraps column name in AVG function
@@ -61,6 +61,9 @@ class ExpressionBuilder
      */
     public function between($minVal, $maxVal)
     {
+        $minVal = $this->removeSpecialChars($minVal);
+        $maxVal = $this->removeSpecialChars($maxVal);
+
         return "BETWEEN {$minVal} AND {$maxVal}";
     }
 
@@ -72,7 +75,9 @@ class ExpressionBuilder
      */
     public function arrays_overlap(string $column, array $filter)
     {
+
         $quotedFilter = sprintf("'%s'", implode("','", $filter));
+        $quotedFilter = $this->removeSpecialChars($quotedFilter);
 
         return sprintf('arrays_overlap(%s, ARRAY [%s])', $column, $quotedFilter);
     }
@@ -85,6 +90,7 @@ class ExpressionBuilder
      */
     public function contains(string $column, string $filter)
     {
+        $filter = $this->removeSpecialChars($filter);
         return sprintf('contains(%s, %s)', $column, $filter);
     }
 
