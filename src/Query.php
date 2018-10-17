@@ -172,6 +172,24 @@ class Query extends Base
     }
 
     /**
+     * @param $expression
+     *
+     * @return $this
+     * @throws InvalidArgumentException
+     */
+    public function onExpr($expression)
+    {
+        if (!is_string($expression)) {
+            throw new InvalidArgumentException('$expression argument must be a string');
+        }
+
+        $joinStr = sprintf(' ON %s', $expression);
+        $this->combineQueryStr($joinStr);
+
+        return $this;
+    }
+
+    /**
      * @param $column
      * @param $condition
      * @param $value
