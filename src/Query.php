@@ -30,6 +30,7 @@ class Query extends Base
     const RIGHT_JOIN = 'RIGHT';
     const INNER_JOIN = 'INNER';
     const FULL_JOIN = 'FULL';
+    const CROSS_JOIN = 'CROSS';
 
     /**
      * @var string
@@ -149,6 +150,18 @@ class Query extends Base
     public function fullJoin($table, $alias = '')
     {
         return $this->join($table, $alias, self::FULL_JOIN);
+    }
+
+    /**
+     * @param $table
+     * @param string $alias
+     *
+     * @return Query
+     * @throws InvalidArgumentException
+     */
+    public function CrossJoin($table, $alias = '')
+    {
+        return $this->join($table, $alias, self::CROSS_JOIN);
     }
 
     /**
