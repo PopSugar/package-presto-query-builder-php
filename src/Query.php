@@ -159,7 +159,7 @@ class Query extends Base
      * @return Query
      * @throws InvalidArgumentException
      */
-    public function CrossJoin($table, $alias = '')
+    public function crossJoin($table, $alias = '')
     {
         return $this->join($table, $alias, self::CROSS_JOIN);
     }
